@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  font-size: 16px;
+  background: url("..//img/sky.jpg") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+header {
+  height: 15%;
+  width: 100%;
+  font-size: 1.5em;
+}
+
+.container {
+  background: beige;
+  padding: 5px;
+  width: 33%;
+  position: relative;
+  left: 50%;
+  border-radius: 15px;
+  box-shadow: 8px 8px 18px 7px rgba(0, 0, 0, 0.43);
+}
+
+.message {
+  margin: 15px 15px 15px;
+  border-radius: 15px 15px 0 0;
+  background-color: white;
+  width: 90%;
+  height: 85%;
+}
+
+h1,
+h2 {
+  text-align: center;
+}
+
+main {
+  display: flex;
+  height: 80%;
+}
+
+footer {
+  height: 5%;
+  width: 100%;
+}
+
+.user-input,
+.btn {
+  margin-top: 0.7em;
+}/*# sourceMappingURL=main.css.map */
