@@ -171,27 +171,27 @@ drone.on("open", (error) => {
   // lista sudionika koji su online
   room.on("members", (m) => {
     members = m;
-    // updateMembersDOM();
+    updateMembersDOM();
   });
 
   // sudionici koji su u chat sobi
   room.on("members_join", (member) => {
     members.push(member);
-    // updateMembersDOM();
+    updateMembersDOM();
   });
 
   // sudionici koji su izašli iz sobe
   room.on("members_leave", ({ id }) => {
     const index = members.findIndex((member) => member.id === id);
     members.splice(index, 1);
-    // updateMembersDOM();
+    updateMembersDOM();
   });
 
   room.on("data", (text, member) => {
     if (member) {
-      // addMessageToListDOM(text, member)
+      addMessageToListDOM(text, member);
     } else {
-      // Message dolazi sa servera
+      //Message dolazi sa servera
     }
   });
 });
