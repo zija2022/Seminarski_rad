@@ -217,20 +217,20 @@ function createMembersElement(member) {
 function updateMembersDOM() {
   DOM.membersCOunt.innerText = `${members.length} users in room:`;
   DOM.membersList.innerHTML = "";
-  members.forEach((members) =>
+  members.forEach((member) =>
     DOM.membersList.appendChild(createMembersElement(member))
   );
 }
 
 function createMessageElement(text, member) {
   const el = document.createElement("div");
-  el.appendChild(createMemberElement(member));
+  el.appendChild(createMembersElement(member));
   el.appendChild(document.createTextNode(text));
   el.className = "message";
   return el;
 }
 
-function addMessageToListDOM(text, memeber) {
+function addMessageToListDOM(text, member) {
   const el = DOM.messages;
   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
   el.appendChild(createMessageElement(text, member));
