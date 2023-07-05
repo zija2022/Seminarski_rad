@@ -158,7 +158,7 @@ drone.on("open", (error) => {
   if (error) {
     return console.error(error);
   }
-  console.log("Seccesfully connected to Scaledrone");
+  console.log("Succesfully connected to Scaledrone");
 
   const room = drone.subscribe("observable-room");
   room.on("open", (error) => {
@@ -197,3 +197,58 @@ drone.on("open", (error) => {
 });
 
 // Moram dodati UI code sa scaldrone webstranice
+const DOM = {
+  membersCOunt: document.querySelector(".members-count"),
+  membersList: document.querySelector(".members-list"),
+  messages: document.querySelector(".messages"),
+  input: document.querySelector(".message-form__input"),
+  form: document.querySelector(".message-form"),
+};
+
+function createMembersElement(member) {
+  const { name, color } = member.clientData;
+  const el = document.createElement("div");
+  el.appendChild(document.createTextNode(name));
+  el.className = "memeber";
+  el.style.color = color;
+  return el;
+}
+
+function updateMembersDOM() {
+  DOM.membersCOunt.innerText = `${members.length} users in room:`;
+  DOM.membersList.innerHTML = "";
+  members.forEach((members) =>
+    DOM.membersList.appendChild(createMembersElement(member))
+  );
+}
+
+function createMessageElement(text, member) {
+  const el = document.createElement("div");
+  el.appendChild(createMemberElement(member));
+  el.appendChild(document.createTextNode(text));
+  el.className = "message";
+  return el;
+}
+
+function addMessageToListDOM(text, memeber) {
+  const el = DOM.messages;
+  const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
+  el.appendChild(createMessageElement(text, member));
+  if (wasTop) {
+    el.scrollTop = el.scrollHeight - el.clientHeight;
+  }
+}
+
+DOM.form.addEventListener("submit", sendMessage);
+
+function sendMessage() {
+  const value = DOM.input.value;
+  if (value === "") {
+    return;
+  }
+  DOM.input.value = "";
+  drone.publish({
+    room: "observable-room",
+    message: value,
+  });
+}

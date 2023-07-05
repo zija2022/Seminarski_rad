@@ -22,11 +22,22 @@
     </header>
 
     <main>
-      <div class="container" id="chat-container">
+      <div class="members-count">-</div>
+      <div class="members-list">-</div>
+      <div class="messages"></div>
+      <form class="message-form" onsubmit="return false;">
+        <input
+          class="message-form__input"
+          placeholder="Type a message.."
+          type="text"
+        />
+        <input class="message-form__button" value="Send" type="submit" />
+      </form>
+      <!-- <div class="container" id="chat-container">
         <div class="message" id="chat-message"></div>
         <input type="text" class="user-input" id="user-input" />
         <button class="btn" id="btn-submit">Pošalji</button>
-      </div>
+      </div> -->
     </main>
 
     <footer>
